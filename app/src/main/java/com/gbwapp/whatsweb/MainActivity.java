@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (!checkPermissions(this, permissionsList)) {
                     ActivityCompat.requestPermissions(this, permissionsList, 21);
                 } else {
-                    Intent intent =new Intent(MainActivity.this, RecStatusActivity.class);
+                    Intent intent =new Intent(MainActivity.this, com.nadinegb.free.RecStatusActivity.class);
                     AdsManager.showNext(MainActivity.this,intent);
                 }
                 break;
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (!checkPermissions(this, permissionsList)) {
                     ActivityCompat.requestPermissions(this, permissionsList, 21);
                 } else {
-                    Intent intent =new Intent(MainActivity.this, MyStatusActivity.class);
+                    Intent intent =new Intent(MainActivity.this, com.nadinegb.free.MyStatusActivity.class);
                     AdsManager.showNext(MainActivity.this,intent);
                 }
                 break;
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (!checkPermissions(this, permissionsList)) {
                     ActivityCompat.requestPermissions(this, permissionsList, 21);
                 } else {
-                    Intent intent =new Intent(MainActivity.this, PrivacyActivity.class);
+                    Intent intent =new Intent(MainActivity.this, com.nadinegb.free.PrivacyActivity.class);
                     AdsManager.showNext(MainActivity.this,intent);
                 }
                 break;
@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.helpBtn:
-                Intent intent =new Intent(MainActivity.this, HelpActivity.class);
+                Intent intent =new Intent(MainActivity.this, com.nadinegb.free.HelpActivity.class);
                 AdsManager.showNext(MainActivity.this,intent);
 
                 break;
@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (!checkPermissions(this, permissionsList)) {
             ActivityCompat.requestPermissions(this, permissionsList, 21);
         } else {
-            Intent intent = new Intent(MainActivity.this, CleanOptionActivity.class);
+            Intent intent = new Intent(MainActivity.this, com.nadinegb.free.CleanOptionActivity.class);
             AdsManager.showNext(MainActivity.this,intent);
 
         }

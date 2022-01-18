@@ -69,10 +69,10 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.onesignal:OneSignal:[3.13.0, 3.99.99]'
     implementation "androidx.multidex:multidex:2.0.1"
-    implementation 'com.applovin:applovin-sdk:10.3.3'
+    implementation 'com.applovin:applovin-sdk:11.0.0'
     implementation 'com.applovin.mediation:facebook-adapter:6.6.0.2'
     implementation 'androidx.annotation:annotation:1.2.0'
-    implementation 'com.facebook.android:audience-network-sdk:6.6.0'
+    implementation 'com.facebook.android:audience-network-sdk:6.8.0'
 
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-analytics'

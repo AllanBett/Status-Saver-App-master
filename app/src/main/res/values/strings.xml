@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">GB Whatsapp</string>
 
-    <string name="appSDK_applovin">2v0xTN4L_l61weWtBZmKCcnN8TMHR_aOLd-9eloGHcuiSy863FucdJkz8Grfyf1r7mMXDqdKmtxxB695-acfE4</string>
-    <string name="bannerID_applovin">aced1b2a8d134e90</string>
-    <string name="intersID_applovin">5c58a4df1e634b63</string>
+    <string name="appSDK_applovin">EImZrxAGpA_xlTugzpepsXfNwEx6B7W1CCwkxSBqN9DBhz3se2uEe8sBmfg5yHAt33wZ3BEQkz6xS2WGcqxT66</string>
+    <string name="bannerID_applovin">3ec898df332b29d6</string>
+    <string name="intersID_applovin">7145713f480a24e8</string>
 
 
     <string name="help">Help</string>
@@ -48,7 +48,7 @@
     <!--  Admob Ads  -->
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="admob_banner_id">ca-app-pub-8464292753530940/7609462944</string>
-    <string name="admob_interstitial_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_interstitial_id">ca-app-pub-8464292753530940/8667247956</string>
     <string name="admob_native_id">ca-app-pub-3940256099942544/2247696110</string>
 
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>

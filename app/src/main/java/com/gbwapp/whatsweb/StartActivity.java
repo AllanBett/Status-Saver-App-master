@@ -14,7 +14,12 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.applovin.mediation.MaxAd;
+import com.applovin.mediation.MaxAdListener;
+import com.applovin.mediation.MaxError;
+import com.applovin.mediation.ads.MaxInterstitialAd;
 import com.applovin.sdk.AppLovinSdk;
+import com.applovin.sdk.AppLovinSdkConfiguration;
 import com.facebook.ads.AdError;
 import com.facebook.ads.AdOptionsView;
 import com.facebook.ads.MediaView;
@@ -26,13 +31,15 @@ import com.nadinegb.free.util.AdsManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity implements MaxAdListener {
     boolean doubleBackToExitPressedOnce = false;
 
     private LinearLayout adView;
     private NativeAd nativeAd;
-
+    private MaxInterstitialAd interstitialAd;
+    private int retryIntent;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +51,118 @@ public class StartActivity extends AppCompatActivity {
         findViewById(R.id.btn_start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this, com.nadinegb.free.SecondActivity.class);
-                AdsManager.showNext(StartActivity.this,intent);
+                Intent intent = new Intent(StartActivity.this, com.nadinegb.free.MainActivity.class);
+               AdsManager.showNext(StartActivity.this,intent);
+                interstitialAd.loadAd();
             }
         });
-        AppLovinSdk.getInstance( this ).showMediationDebugger();
+        AppLovinSdk.getInstance( this ).setMediationProvider("Max");
+        AppLovinSdk.initializeSdk(this, new AppLovinSdk.SdkInitializationListener() {
+            @Override
+            public void onSdkInitialized(AppLovinSdkConfiguration config) {
+                //AppLovin sdk initialised, load ads
+
+            }
+        });
+
+        interstitialAd = new MaxInterstitialAd("APP_ID",this);
+        interstitialAd.setListener(this);
+
+        if ( interstitialAd.isReady() )
+        {
+            interstitialAd.showAd();
+        }
+
+        //load ads
+        interstitialAd.loadAd();
     }
-    //native ad
+
+    // MAX Ad Listener
+    @Override
+    public void onAdLoaded(final MaxAd maxAd)
+    {
+        // Interstitial ad is ready to be shown. interstitialAd.isReady() will now return 'true'
+
+        // Reset retry attempt
+        retryIntent = 0;
+    }
+
+    @Override
+    public void onAdLoadFailed(final String adUnitId, final MaxError error)
+    {
+        // Interstitial ad failed to load
+        // AppLovin recommends that you retry with exponentially higher delays up to a maximum delay (in this case 64 seconds)
+
+        retryIntent++;
+        long delayMillis = TimeUnit.SECONDS.toMillis( (long) Math.pow( 2, Math.min( 6, retryIntent ) ) );
+
+        new Handler().postDelayed( new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                interstitialAd.loadAd();
+            }
+        }, 2000 );
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            AdsManager.showONLY(this);
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
+
+
+    @Override
+    public void onAdDisplayed(MaxAd ad) {
+
+    }
+
+    @Override
+    public void onAdHidden(MaxAd ad) {
+
+        //load ads
+        interstitialAd.loadAd();
+
+    }
+
+    @Override
+    public void onAdClicked(MaxAd ad) {
+
+    }
+
+//    @Override
+//    public void onAdLoadFailed(String adUnitId, MaxError error) {
+//
+//    }
+
+    @Override
+    public void onAdDisplayFailed(MaxAd ad, MaxError error) {
+
+    }
+}
+
+//dump
+
+
+
+//native ad
 //    private LinearLayout adView;
 //    private NativeAd nativeAd;
 
@@ -137,24 +249,3 @@ public class StartActivity extends AppCompatActivity {
 //        nativeAd.registerViewForInteraction(
 //                adView, nativeAdMedia, nativeAdIcon, clickableViews);
 //    }
-
-    @Override
-    public void onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            AdsManager.showONLY(this);
-            return;
-        }
-
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce = false;
-            }
-        }, 2000);
-    }
-}

@@ -6,6 +6,7 @@ import com.applovin.sdk.AppLovinSdk;
 import com.applovin.sdk.AppLovinSdkConfiguration;
 import com.facebook.ads.AdSettings;
 import com.facebook.ads.AudienceNetworkAds;
+import com.facebook.ads.InterstitialAd;
 import com.onesignal.OneSignal;
 
 public class MyApplication extends Application {
@@ -13,7 +14,7 @@ public class MyApplication extends Application {
    // public static MyApplication getInstance() {
    //     return intance;
    //}
-    //private InterstitialAd interstitialAd;
+    private InterstitialAd interstitialAd;
 
 
 
