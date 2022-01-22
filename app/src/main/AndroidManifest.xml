@@ -59,7 +59,7 @@
             android:launchMode='singleTask'
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nadinegb.free.SecondActivity"
+            android:name="SecondActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nadinegb.free.MainActivity"

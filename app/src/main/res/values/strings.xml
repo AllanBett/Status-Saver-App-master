@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GB Whatsapp</string>
+    <string name="app_name">Status Saver PRO </string>
 
     <string name="appSDK_applovin">EImZrxAGpA_xlTugzpepsXfNwEx6B7W1CCwkxSBqN9DBhz3se2uEe8sBmfg5yHAt33wZ3BEQkz6xS2WGcqxT66</string>
     <string name="bannerID_applovin">3ec898df332b29d6</string>
@@ -46,10 +46,10 @@
     <string name="facebook_native">YOUR_PLACEMENT_ID</string>-->
 
     <!--  Admob Ads  -->
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_app_id">ca-app-pub-8464292753530940~7801034630</string>
     <string name="admob_banner_id">ca-app-pub-8464292753530940/7609462944</string>
     <string name="admob_interstitial_id">ca-app-pub-8464292753530940/8667247956</string>
-    <string name="admob_native_id">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="admob_native_id">ca-app-pub-8464292753530940/5786482484</string>
 
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
     <string name="default_text">Normal</string>
